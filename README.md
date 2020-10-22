@@ -1,2 +1,2 @@
-# Calculator
+# StringCalculator
 Online Technical Assessment
