@@ -41,7 +41,14 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void customDelimiters(){
+    public void customDelimiterTest(){
         assertEquals(3, calculator.add("//;\n2;1"));
+    }
+
+    @Test
+    public void negativeNumberTest(){
+        assertThrows(NegativeNumberException.class, ()->{
+            calculator.add("1,-2");
+        });
     }
 }

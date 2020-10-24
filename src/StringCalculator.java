@@ -1,8 +1,7 @@
 public class StringCalculator {
 
     private boolean isEmpty(String numbers){
-        if(numbers.length()==0) return true;
-        return false;
+        return numbers.length() == 0;
     }
 
     private String[] splitNumbers(String numbers){
@@ -22,6 +21,12 @@ public class StringCalculator {
         return numbersString;
     }
 
+    private void validateNumbers(int[] numbers){
+        for(int n:numbers){
+            if(n<0) throw new NegativeNumberException(n);
+        }
+    }
+
     private int[] stringToInteger(String[] numbersString){
         int numbers[] = new int[numbersString.length];
         for(int i=0;i< numbersString.length;i++){
@@ -36,7 +41,11 @@ public class StringCalculator {
 
         String[] numbersString = splitNumbers(numbers);
 
-        return stringToInteger(numbersString);
+        int[] numberArray = stringToInteger(numbersString);
+
+        validateNumbers(numberArray);
+
+        return numberArray;
     }
 
     private int getSum(int[] numberArray){
@@ -49,7 +58,6 @@ public class StringCalculator {
 
     public int add(String numbers){
         int[] numberArray = extractNumbers(numbers);
-        int sum = getSum(numberArray);
-        return sum;
+        return getSum(numberArray);
     }
 }
