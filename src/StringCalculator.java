@@ -6,7 +6,19 @@ public class StringCalculator {
     }
 
     private String[] splitNumbers(String numbers){
-        String[] numbersString = numbers.split("[\n,]+");
+        String[] numbersString;
+        if(numbers.startsWith("//")){
+            numbersString = splitNumbersWithCustomDelimiter(numbers);
+        }else {
+            numbersString = numbers.split("[\n,]+");
+        }
+        return numbersString;
+    }
+
+    private String[] splitNumbersWithCustomDelimiter(String numbers){
+        String[] numbersString = numbers.split("[\n]+", 2);
+        String delimiter = numbersString[0].substring(2);
+        numbersString = numbersString[1].split(delimiter);
         return numbersString;
     }
 
