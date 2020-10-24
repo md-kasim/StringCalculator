@@ -26,7 +26,12 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void TwoNumberTest(){
+    public void twoNumberTest(){
         assertEquals(14, calculator.add("6,8"));
+    }
+
+    @Test
+    public void NNumberTest(){
+        assertEquals(22, calculator.add("6,8,3,5"));
     }
 }
