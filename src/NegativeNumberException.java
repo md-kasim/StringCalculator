@@ -1,6 +1,6 @@
 public class NegativeNumberException extends RuntimeException{
 
-    public NegativeNumberException(int number){
+    public NegativeNumberException(String number){
         System.out.println("negatives not allowed : "+number);
     }
 

@@ -51,4 +51,11 @@ public class StringCalculatorTest {
             calculator.add("1,-2");
         });
     }
+
+    @Test
+    public void multipleNegativesTest(){
+        assertThrows(NegativeNumberException.class, ()->{
+            calculator.add("//;\n1;-2;-3");
+        });
+    }
 }

@@ -22,9 +22,11 @@ public class StringCalculator {
     }
 
     private void validateNumbers(int[] numbers){
+        String negatives = "";
         for(int n:numbers){
-            if(n<0) throw new NegativeNumberException(n);
+            if(n<0) negatives = negatives + n +", ";
         }
+        if(!negatives.isEmpty()) throw new NegativeNumberException(negatives.replaceFirst(".{2}$", ""));
     }
 
     private int[] stringToInteger(String[] numbersString){
@@ -40,11 +42,8 @@ public class StringCalculator {
             return new int[0];
 
         String[] numbersString = splitNumbers(numbers);
-
         int[] numberArray = stringToInteger(numbersString);
-
         validateNumbers(numberArray);
-
         return numberArray;
     }
 
