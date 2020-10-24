@@ -6,7 +6,7 @@ public class StringCalculator {
     }
 
     private String[] splitNumbers(String numbers){
-        String[] numbersString = numbers.split(",");
+        String[] numbersString = numbers.split("[\n,]+");
         return numbersString;
     }
 

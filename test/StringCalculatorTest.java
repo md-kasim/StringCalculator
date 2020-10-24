@@ -34,4 +34,9 @@ public class StringCalculatorTest {
     public void NNumberTest(){
         assertEquals(22, calculator.add("6,8,3,5"));
     }
+
+    @Test
+    public void newLineDelimiter(){
+        assertEquals(22, calculator.add("6,8\n3,5"));
+    }
 }
