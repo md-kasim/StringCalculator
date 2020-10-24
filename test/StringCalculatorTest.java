@@ -16,7 +16,12 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void emptyString(){
+    public void emptyStringTest(){
         assertEquals(0, calculator.add(""));
+    }
+
+    @Test
+    public void oneNumberTest(){
+        assertEquals(6, calculator.add("6"));
     }
 }
