@@ -73,4 +73,9 @@ public class StringCalculatorTest {
     public void multipleDelimitersTest(){
         assertEquals(10, calculator.add("//[*][%]\n1*3%2*4"));
     }
+
+    @Test
+    public void multipleDelimitersOfAnyLengthTest(){
+        assertEquals(27, calculator.add("//[***][%%%][#%#]\n1#%#7***4#%#5***2%%%8"));
+    }
 }
