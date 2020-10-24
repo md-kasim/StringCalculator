@@ -1,3 +1,6 @@
+import java.util.regex.*;
+
+
 public class StringCalculator {
 
     private boolean isEmpty(String numbers){
@@ -22,7 +25,7 @@ public class StringCalculator {
     }
 
     private String hideMetaCharacter(String delimiter){
-        String metaChars = ".\\+*^$";
+        String metaChars = ".\\+*^|$";
         for(char c:metaChars.toCharArray()){
             delimiter = delimiter.replace(Character.toString(c), "\\"+c);
         }
@@ -30,11 +33,18 @@ public class StringCalculator {
     }
 
     private String extractDelimiter(String str){
-        String delimiter;
+        String delimiter = "";
         if(str.endsWith("]")){
-             delimiter = str.substring(3, str.length()-1);
-        }else delimiter = str.substring(2);
-        delimiter = hideMetaCharacter(delimiter);
+            Matcher matcher = Pattern.compile("\\[(.*?)\\]").matcher(str);
+            while (matcher.find()) {
+                String exp = hideMetaCharacter(matcher.group(1));
+                delimiter = delimiter + exp + "|";
+            }
+            delimiter = delimiter.replaceFirst(".$", "");
+        }else{
+            delimiter = str.substring(2);
+            delimiter = hideMetaCharacter(delimiter);
+        }
         return delimiter;
     }
 
