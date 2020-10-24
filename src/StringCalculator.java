@@ -16,9 +16,26 @@ public class StringCalculator {
 
     private String[] splitNumbersWithCustomDelimiter(String numbers){
         String[] numbersString = numbers.split("[\n]+", 2);
-        String delimiter = numbersString[0].substring(2);
+        String delimiter = extractDelimiter(numbersString[0]);
         numbersString = numbersString[1].split(delimiter);
         return numbersString;
+    }
+
+    private String hideMetaCharacter(String delimiter){
+        String metaChars = ".\\+*^$";
+        for(char c:metaChars.toCharArray()){
+            delimiter = delimiter.replace(Character.toString(c), "\\"+c);
+        }
+        return delimiter;
+    }
+
+    private String extractDelimiter(String str){
+        String delimiter;
+        if(str.endsWith("]")){
+             delimiter = str.substring(3, str.length()-1);
+        }else delimiter = str.substring(2);
+        delimiter = hideMetaCharacter(delimiter);
+        return delimiter;
     }
 
     private void validateNumbers(int[] number){
@@ -31,7 +48,7 @@ public class StringCalculator {
     }
 
     private int[] stringToInteger(String[] numbersString){
-        int numbers[] = new int[numbersString.length];
+        int[] numbers = new int[numbersString.length];
         for(int i=0;i< numbersString.length;i++){
             numbers[i] = Integer.parseInt(numbersString[i]);
         }
