@@ -24,4 +24,9 @@ public class StringCalculatorTest {
     public void oneNumberTest(){
         assertEquals(6, calculator.add("6"));
     }
+
+    @Test
+    public void TwoNumberTest(){
+        assertEquals(14, calculator.add("6,8"));
+    }
 }
