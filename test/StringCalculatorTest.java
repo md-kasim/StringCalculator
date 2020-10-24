@@ -58,4 +58,9 @@ public class StringCalculatorTest {
             calculator.add("//;\n1;-2;-3");
         });
     }
+
+    @Test
+    public void ignoreBiggerNumberTest(){
+        assertEquals(2, calculator.add("2,1001"));
+    }
 }

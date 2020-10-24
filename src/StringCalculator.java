@@ -21,10 +21,11 @@ public class StringCalculator {
         return numbersString;
     }
 
-    private void validateNumbers(int[] numbers){
+    private void validateNumbers(int[] number){
         String negatives = "";
-        for(int n:numbers){
-            if(n<0) negatives = negatives + n +", ";
+        for(int i=0;i<number.length;i++){
+            if(number[i]<0) negatives = negatives + number[i] +", ";
+            if(number[i]>1000) number[i] = 0;
         }
         if(!negatives.isEmpty()) throw new NegativeNumberException(negatives.replaceFirst(".{2}$", ""));
     }
